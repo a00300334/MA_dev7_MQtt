@@ -3,6 +3,9 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+        maven{
+            url = uri("https://repo.eclipse.org/content/repositories/paho-shapshots/")
+        }
     }
 }
 dependencyResolutionManagement {
