@@ -3,8 +3,9 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+
         maven{
-            url = uri("https://repo.eclipse.org/content/repositories/paho-shapshots/")
+            url = uri("https://repo.eclipse.org/content/repositories/paho-snapshots/")
         }
     }
 }
@@ -16,6 +17,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Mqtt_ExampleProject"
+rootProject.name = "Mqtt Example"
 include(":app")
  

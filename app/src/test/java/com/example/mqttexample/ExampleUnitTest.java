@@ -1,4 +1,4 @@
-package com.example.mqtt_exampleproject;
+package com.example.mqttexample;
 
 import org.junit.Test;
 

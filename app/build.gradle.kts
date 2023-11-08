@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.mqtt_exampleproject"
+    namespace = "com.example.mqttexample"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.example.mqtt_exampleproject"
+        applicationId = "com.example.mqttexample"
         minSdk = 26
         targetSdk = 33
         versionCode = 1
@@ -29,9 +29,7 @@ android {
 }
 
 dependencies {
-
     implementation("org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5")
-
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
