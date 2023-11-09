@@ -64,6 +64,35 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        connectMqtt();
+    }
+
+    public void sendMessage(View view){
+        if(!mqttAsyncClient.isConnected()){
+            connectMqtt();
+            return;
+        }
+
+        String message = editText.getText().toString();
+        if(message.length() > 0) {
+            // convert String to the MqttMessage
+            MqttMessage mqttMessage = new MqttMessage(message.getBytes(StandardCharsets.UTF_8));
+
+            //send the mqttMessage to a topic
+            try {
+                mqttAsyncClient.publish(TOPIC, mqttMessage);
+                Log.d("MQTT","Message sent.. published");
+
+                textView.setText(message);
+                editText.setText("");
+
+            } catch (MqttException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    private void connectMqtt() {
         try {
             mqttAsyncClient = new MqttAsyncClient(broker,clientId,new MemoryPersistence());
 
@@ -114,26 +143,6 @@ public class MainActivity extends AppCompatActivity {
 
         } catch (MqttException e) {
             throw new RuntimeException(e);
-        }
-    }
-
-    public void sendMessage(View view){
-        String message = editText.getText().toString();
-        if(message.length() > 0) {
-            // convert String to the MqttMessage
-            MqttMessage mqttMessage = new MqttMessage(message.getBytes(StandardCharsets.UTF_8));
-
-            //send the mqttMessage to a topic
-            try {
-                mqttAsyncClient.publish(TOPIC, mqttMessage);
-                Log.d("MQTT","Message sent.. published");
-
-                textView.setText(message);
-                editText.setText("");
-
-            } catch (MqttException e) {
-                throw new RuntimeException(e);
-            }
         }
     }
 }
