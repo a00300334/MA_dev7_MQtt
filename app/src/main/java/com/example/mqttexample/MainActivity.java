@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private Context context;
     private MqttAsyncClient mqttAsyncClient;
     //private String broker = "tcp://192.168.23.123:1883"; // desktop
-   private String broker = "tcp://192.168.0.101:1883"; // laptop
+   private String broker = "tcp://192.168.0.102:1883"; // laptop
 
     private String clientId;
     private static final String TOPIC = "inclass/example";
